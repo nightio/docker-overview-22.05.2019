@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  php:
+    build:
+      context: .
+    volumes:
+      - ./:/srv/symfony:rw,cached
+    ports:
+      - "10000:80"
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - ./volumes/db:/var/lib/mysql:rw
